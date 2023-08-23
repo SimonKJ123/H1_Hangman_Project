@@ -101,7 +101,7 @@ namespace H1_Hangman_Project
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Velkomen til Hangman!");
+            Console.WriteLine("Velkommen til Hangman!");
             Console.WriteLine("----------------------------------------------------");
 
             Random random = new Random();
@@ -121,44 +121,44 @@ namespace H1_Hangman_Project
 
             while (amountOfTimesWrong != 6 && currentLettersRight != lengthOfWordToGuess)
             {
-                Console.Write("\nBugstaver gættet: ");
+                Console.Write("\nBogstaver gættet: ");
                 foreach (char letter in currentLettersGuessed)
                 {
                     Console.Write(letter + " ");
                 }
-                // Prompt user for input
-                Console.Write("\nGæt et bugstav: ");
+                // Prompt brugeren for input
+                Console.Write("\nGæt et bogstav: ");
                 char letterGuessed = Console.ReadLine()[0];
-                // Check if letter has been guessed before
+                // Tjek om bogstavet er blevet gættet før
                 if (currentLettersGuessed.Contains(letterGuessed))
                 {
-                    Console.Write("\r\n Du har allerede gætte dette bugstav.");
+                    Console.Write("\r\n Du har allerede gættet dette bogstav.");
                     printHangman(amountOfTimesWrong);
                     currentLettersRight = printWord(currentLettersGuessed, randomWord);
                     printLines(randomWord);
                 }
                 else
                 {
-                    // Check if letter in the randomword
+                    // Tjek om bogstavet er i det tilfældige ord
                     bool right = false;
                     for (int i = 0; i < randomWord.Length; i++) { if (letterGuessed == randomWord[i]) { right = true; } }
 
-                    // User is correct
+                    // Brugeren har ret
                     if (right)
                     {
                         printHangman(amountOfTimesWrong);
-                        // print word
+                        // Udskriv ordet
                         currentLettersGuessed.Add(letterGuessed);
                         currentLettersRight = printWord(currentLettersGuessed, randomWord);
                         Console.Write("\r\n");
                         printLines(randomWord);
                     }
-                    // User was incorrect
+                    // Brugeren havde ikke ret
                     else
                     {
                         amountOfTimesWrong += 1;
                         currentLettersGuessed.Add(letterGuessed);
-                        // Update the drawing and print word
+                        // Opdater tegningen og udskriv ordet
                         printHangman(amountOfTimesWrong);
                         currentLettersRight = printWord(currentLettersGuessed, randomWord);
                         Console.Write("\r\n");
@@ -166,7 +166,7 @@ namespace H1_Hangman_Project
                     }
                 }
             }
-            Console.WriteLine("\r\nSpillet er over!");
+            Console.WriteLine("\r\nSpillet er slut!");
         }
     }
 }
